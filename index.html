@@ -16,9 +16,9 @@ box-sizing:border-box;
 body{
 margin:0;
 font-family:Georgia,serif;
-background:linear-gradient(135deg,#f8efe3,#fff,#ead7b0);
+background:linear-gradient(135deg,#f8efe3,#fff,#e8d0a0);
 min-height:100vh;
-color:#76552d;
+color:#6d4b28;
 overflow-x:hidden;
 }
 
@@ -33,16 +33,22 @@ display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-z-index:10;
-animation:hide 2.5s forwards;
+z-index:20;
+animation:loadingEnd 3s forwards;
 }
 
 #loading h2{
 font-size:28px;
 }
 
-@keyframes hide{
-to{
+@keyframes loadingEnd{
+0%{
+opacity:1;
+}
+80%{
+opacity:1;
+}
+100%{
 opacity:0;
 visibility:hidden;
 }
@@ -52,59 +58,72 @@ visibility:hidden;
 .heart{
 position:absolute;
 font-size:25px;
-animation:up 4s infinite;
+animation:heartMove 5s infinite;
 }
 
-@keyframes up{
-from{
+@keyframes heartMove{
+
+0%{
 transform:translateY(100vh);
 opacity:0;
 }
+
 50%{
 opacity:1;
 }
-to{
+
+100%{
 transform:translateY(-20vh);
 opacity:0;
 }
+
 }
 
 
-/* Home */
+/* Main */
 
 .container{
 text-align:center;
 padding:30px 15px;
 }
 
+
 h1{
-margin-top:70px;
-font-size:32px;
+margin-top:60px;
+font-size:34px;
 }
 
-p{
+
+.subtitle{
 font-size:18px;
 }
 
 
+
 button{
-background:#b18a52;
-border:none;
-padding:14px 28px;
-border-radius:30px;
+
+background:#b28a52;
 color:white;
+border:none;
+padding:15px 30px;
+border-radius:30px;
 font-size:17px;
 cursor:pointer;
-margin:20px;
+box-shadow:0 5px 15px #cdb58b;
+
 }
+
 
 
 /* Counter */
 
 #counter{
+
 font-size:20px;
-margin-top:20px;
+margin:20px;
+
 }
+
 
 
 /* Envelopes */
@@ -115,42 +134,47 @@ display:none;
 
 justify-content:center;
 flex-wrap:wrap;
-gap:20px;
 
-margin-top:30px;
+gap:18px;
+
+max-width:900px;
+
+margin:auto;
 
 }
 
 
 .envelope{
 
-width:120px;
-height:90px;
+width:95px;
+height:75px;
 
-background:linear-gradient(#e2bd79,#ad7c32);
+background:linear-gradient(#e6c27c,#ad7b32);
 
 border-radius:12px;
 
 display:flex;
-justify-content:center;
-align-items:center;
 
-font-size:40px;
+align-items:center;
+justify-content:center;
+
+font-size:35px;
 
 cursor:pointer;
 
-box-shadow:0 8px 18px #c7a56d;
-
 transition:.4s;
+
+box-shadow:0 8px 20px #c9aa72;
 
 }
 
 
 .envelope:hover{
 
-transform:translateY(-8px) rotate(5deg);
+transform:translateY(-10px) scale(1.05);
 
 }
+
 
 
 /* Message */
@@ -167,7 +191,8 @@ left:50%;
 transform:translate(-50%,-50%);
 
 width:85%;
-max-width:400px;
+
+max-width:450px;
 
 background:white;
 
@@ -175,18 +200,23 @@ padding:30px;
 
 border-radius:25px;
 
+font-size:21px;
+
+line-height:1.8;
+
 text-align:center;
 
-font-size:22px;
+box-shadow:0 10px 40px #b99b6b;
 
-box-shadow:0 10px 35px #b99b6b;
+animation:openMessage .5s;
 
-animation:open .5s;
+z-index:30;
 
 }
 
 
-@keyframes open{
+
+@keyframes openMessage{
 
 from{
 
@@ -197,6 +227,41 @@ transform:translate(-50%,-50%) scale(0);
 to{
 
 transform:translate(-50%,-50%) scale(1);
+
+}
+
+}
+
+
+
+.smallHeart{
+
+position:fixed;
+
+font-size:25px;
+
+animation:pop 1s forwards;
+
+z-index:40;
+
+}
+
+
+@keyframes pop{
+
+from{
+
+transform:scale(0);
+
+opacity:1;
+
+}
+
+to{
+
+transform:translateY(-100px) scale(1.5);
+
+opacity:0;
 
 }
 
@@ -216,8 +281,8 @@ transform:translate(-50%,-50%) scale(1);
 <h2>Loading Memories... 🤍</h2>
 
 <div class="heart" style="left:20%">🤍</div>
-<div class="heart" style="left:50%;animation-delay:1s">♡</div>
-<div class="heart" style="left:80%;animation-delay:2s">🤍</div>
+<div class="heart" style="left:50%">♡</div>
+<div class="heart" style="left:80%">🤍</div>
 
 </div>
 
@@ -231,24 +296,24 @@ A Gift Made With Love For Ghassan 🤍
 </h1>
 
 
-<p>
-Every letter has a piece of my heart.
+<p class="subtitle">
+30 little messages from my heart 💌
 </p>
 
 
-<button onclick="openLetters()">
+<button onclick="showLetters()">
 ❤️ Open My Heart
 </button>
 
 
 <div id="counter">
-Opened: 0 / 12
+Opened: 0 / 30
 </div>
-
 
 
 <div id="letters">
 
+<!-- 30 Envelopes -->
 
 <div class="envelope" onclick="openMessage(1)">💌</div>
 <div class="envelope" onclick="openMessage(2)">💌</div>
@@ -262,10 +327,26 @@ Opened: 0 / 12
 <div class="envelope" onclick="openMessage(10)">💌</div>
 <div class="envelope" onclick="openMessage(11)">💌</div>
 <div class="envelope" onclick="openMessage(12)">💌</div>
-
+<div class="envelope" onclick="openMessage(13)">💌</div>
+<div class="envelope" onclick="openMessage(14)">💌</div>
+<div class="envelope" onclick="openMessage(15)">💌</div>
+<div class="envelope" onclick="openMessage(16)">💌</div>
+<div class="envelope" onclick="openMessage(17)">💌</div>
+<div class="envelope" onclick="openMessage(18)">💌</div>
+<div class="envelope" onclick="openMessage(19)">💌</div>
+<div class="envelope" onclick="openMessage(20)">💌</div>
+<div class="envelope" onclick="openMessage(21)">💌</div>
+<div class="envelope" onclick="openMessage(22)">💌</div>
+<div class="envelope" onclick="openMessage(23)">💌</div>
+<div class="envelope" onclick="openMessage(24)">💌</div>
+<div class="envelope" onclick="openMessage(25)">💌</div>
+<div class="envelope" onclick="openMessage(26)">💌</div>
+<div class="envelope" onclick="openMessage(27)">💌</div>
+<div class="envelope" onclick="openMessage(28)">💌</div>
+<div class="envelope" onclick="openMessage(29)">💌</div>
+<div class="envelope" onclick="openMessage(30)">💌</div>
 
 </div>
-
 
 </div>
 
@@ -283,9 +364,7 @@ Close 🤍
 
 
 
-
 <script>
-
 
 let opened=[];
 
@@ -314,13 +393,50 @@ let messages={
 
 11:"بحبك كتير 🤍",
 
-12:"بحبك كل يوم 🤍"
+12:"بحبك كل يوم 🤍",
+
+13:"وجودك بحياتي نعمة كبيرة 🤍",
+
+14:"ضحكتك من الأشياء اللي بتفرح قلبي 🤍",
+
+15:"بحب تفاصيلك الصغيرة وكل شيء فيك 🤍",
+
+16:"أنت الشخص اللي دايمًا بدعي ربنا يحفظه إلي 🤍",
+
+17:"معك بحس بالأمان والراحة 🤍",
+
+18:"بحب كل لحظة حلوة جمعتنا 🤍",
+
+19:"يا رب أشوفك دايمًا مبسوط وفرحان 🤍",
+
+20:"الله يجمعنا على خير ويكتب لنا أجمل الأيام 🤍",
+
+21:"رح أضل أختارك كل يوم 🤍",
+
+22:"بتمنى نعيش أيام مليانة حب وفرح سوا 🤍",
+
+23:"أنت جزء من أحلامي الجميلة 🤍",
+
+24:"وجودك فرق بحياتي بطريقة ما بتنحكى 🤍",
+
+25:"ربي يحميك ويخليك إلي 🤍",
+
+26:"أنا فخورة فيك وبكل تعبك 🤍",
+
+27:"قلبي اختارك من بين الكل 🤍",
+
+28:"شكرًا لأنك أنت 🤍",
+
+29:"آخر ظرف... بس حبي إلك ما إله آخر 🤍",
+
+30:
+"غسان 🤍\n\nإذا وصلت لهالرسالة يعني إنك فتحت كل جزء صغير من قلبي.\n\nكل ظرف كان فيه كلمة، بس الحقيقة إن كل الكلمات ما بتكفي توصف قديش إلك مكانة كبيرة عندي.\n\nبحبك مش بس بالأيام الحلوة، بحبك بكل التفاصيل وبكل اللحظات اللي جمعتنا.\n\nبدعي ربنا يحفظك ويسعد قلبك ويكتب لنا الخير وين ما كان.\n\nبتمنى أشوفك دايمًا مبسوط، وأكون سبب من أسباب فرحتك زي ما أنت سبب من أسباب فرحتي.\n\nشكرًا لأنك أنت... وبحبك اليوم وبكرة وكل يوم 🤍"
 
 };
 
 
 
-function openLetters(){
+function showLetters(){
 
 document.getElementById("letters").style.display="flex";
 
@@ -330,13 +446,10 @@ document.getElementById("letters").style.display="flex";
 
 function openMessage(number){
 
-
 document.getElementById("messageText").innerHTML=
-messages[number];
-
+messages[number].replace(/\n/g,"<br>");
 
 document.getElementById("messageBox").style.display="block";
-
 
 
 if(!opened.includes(number)){
@@ -344,11 +457,12 @@ if(!opened.includes(number)){
 opened.push(number);
 
 document.getElementById("counter").innerHTML=
-"Opened: "+opened.length+" / 12";
+"Opened: "+opened.length+" / 30";
 
 }
 
 
+createHeart();
 
 }
 
@@ -361,9 +475,33 @@ document.getElementById("messageBox").style.display="none";
 }
 
 
+
+function createHeart(){
+
+let heart=document.createElement("div");
+
+heart.className="smallHeart";
+
+heart.innerHTML="🤍";
+
+heart.style.left=Math.random()*80+"%";
+
+heart.style.top="70%";
+
+document.body.appendChild(heart);
+
+
+setTimeout(()=>{
+
+heart.remove();
+
+},1000);
+
+}
+
+
 </script>
 
 
 </body>
-
 </html>
