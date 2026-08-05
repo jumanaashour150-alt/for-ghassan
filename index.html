@@ -16,7 +16,7 @@ box-sizing:border-box;
 body{
 margin:0;
 font-family:Georgia,serif;
-background:linear-gradient(135deg,#f8efe3,#fff,#e8d0a0);
+background:linear-gradient(135deg,#faf0e3,#ffffff,#e7d0a3);
 min-height:100vh;
 color:#6d4b28;
 overflow-x:hidden;
@@ -28,42 +28,47 @@ overflow-x:hidden;
 #loading{
 position:fixed;
 inset:0;
-background:#f8efe3;
+background:#faf0e3;
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-z-index:20;
-animation:loadingEnd 3s forwards;
+z-index:50;
+animation:loading 3s forwards;
 }
 
 #loading h2{
-font-size:28px;
+font-size:30px;
 }
 
-@keyframes loadingEnd{
+
+@keyframes loading{
+
 0%{
 opacity:1;
 }
+
 80%{
 opacity:1;
 }
+
 100%{
 opacity:0;
 visibility:hidden;
 }
+
 }
 
 
-.heart{
+.floating{
 position:absolute;
-font-size:25px;
-animation:heartMove 5s infinite;
+font-size:24px;
+animation:float 5s infinite;
 }
 
-@keyframes heartMove{
+@keyframes float{
 
-0%{
+from{
 transform:translateY(100vh);
 opacity:0;
 }
@@ -72,7 +77,7 @@ opacity:0;
 opacity:1;
 }
 
-100%{
+to{
 transform:translateY(-20vh);
 opacity:0;
 }
@@ -80,98 +85,125 @@ opacity:0;
 }
 
 
-/* Main */
+
+/* Home */
 
 .container{
+
 text-align:center;
-padding:30px 15px;
+padding:25px 15px;
+
 }
 
 
 h1{
+
 margin-top:60px;
-font-size:34px;
+font-size:36px;
+
 }
 
 
 .subtitle{
-font-size:18px;
+
+font-size:19px;
+
 }
 
 
 
-button{
+.enter{
 
-background:#b28a52;
-color:white;
+background:#b18a52;
 border:none;
-padding:15px 30px;
-border-radius:30px;
-font-size:17px;
+color:white;
+padding:16px 35px;
+border-radius:35px;
+font-size:18px;
 cursor:pointer;
-box-shadow:0 5px 15px #cdb58b;
+margin:25px;
 
 }
 
 
 
-/* Counter */
+/* Progress */
 
-#counter{
+#progress{
 
 font-size:20px;
-margin:20px;
+margin:15px;
 
 }
 
 
 
-/* Envelopes */
+/* Letters */
+
 
 #letters{
 
 display:none;
 
-justify-content:center;
-flex-wrap:wrap;
-
-gap:18px;
-
-max-width:900px;
+max-width:950px;
 
 margin:auto;
+
+justify-content:center;
+
+flex-wrap:wrap;
+
+gap:20px;
 
 }
 
 
+
 .envelope{
 
-width:95px;
-height:75px;
+width:115px;
+height:90px;
 
-background:linear-gradient(#e6c27c,#ad7b32);
+background:linear-gradient(#e5c17d,#ae7c32);
 
-border-radius:12px;
+border-radius:15px;
 
 display:flex;
 
+flex-direction:column;
+
 align-items:center;
+
 justify-content:center;
 
-font-size:35px;
+color:white;
 
 cursor:pointer;
 
-transition:.4s;
-
 box-shadow:0 8px 20px #c9aa72;
+
+transition:.4s;
 
 }
 
 
 .envelope:hover{
 
-transform:translateY(-10px) scale(1.05);
+transform:translateY(-10px) rotate(4deg);
+
+}
+
+
+.number{
+
+font-size:14px;
+
+}
+
+
+.icon{
+
+font-size:35px;
 
 }
 
@@ -179,7 +211,8 @@ transform:translateY(-10px) scale(1.05);
 
 /* Message */
 
-#messageBox{
+
+#message{
 
 display:none;
 
@@ -190,11 +223,11 @@ left:50%;
 
 transform:translate(-50%,-50%);
 
+background:white;
+
 width:85%;
 
 max-width:450px;
-
-background:white;
 
 padding:30px;
 
@@ -208,15 +241,14 @@ text-align:center;
 
 box-shadow:0 10px 40px #b99b6b;
 
-animation:openMessage .5s;
+z-index:60;
 
-z-index:30;
+animation:open .5s;
 
 }
 
 
-
-@keyframes openMessage{
+@keyframes open{
 
 from{
 
@@ -233,39 +265,55 @@ transform:translate(-50%,-50%) scale(1);
 }
 
 
+.close{
 
-.smallHeart{
+background:#b18a52;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:25px;
+margin-top:20px;
+
+}
+
+
+
+/* End screen */
+
+#ending{
+
+display:none;
 
 position:fixed;
 
-font-size:25px;
+inset:0;
 
-animation:pop 1s forwards;
+background:linear-gradient(135deg,#faf0e3,#fff);
 
-z-index:40;
+z-index:100;
+
+text-align:center;
+
+padding:60px 25px;
+
+}
+
+
+#ending h2{
+
+font-size:35px;
 
 }
 
 
-@keyframes pop{
+#ending p{
 
-from{
+font-size:22px;
 
-transform:scale(0);
-
-opacity:1;
+line-height:1.8;
 
 }
 
-to{
-
-transform:translateY(-100px) scale(1.5);
-
-opacity:0;
-
-}
-
-}
 
 
 </style>
@@ -280,9 +328,9 @@ opacity:0;
 
 <h2>Loading Memories... 🤍</h2>
 
-<div class="heart" style="left:20%">🤍</div>
-<div class="heart" style="left:50%">♡</div>
-<div class="heart" style="left:80%">🤍</div>
+<div class="floating" style="left:20%">🤍</div>
+<div class="floating" style="left:50%;animation-delay:1s">♡</div>
+<div class="floating" style="left:80%;animation-delay:2s">🤍</div>
 
 </div>
 
@@ -296,68 +344,211 @@ A Gift Made With Love For Ghassan 🤍
 </h1>
 
 
-<p class="subtitle">
-30 little messages from my heart 💌
-</p>
+<div class="subtitle">
+A little journey from my heart 💌
+</div>
 
 
-<button onclick="showLetters()">
-❤️ Open My Heart
+<button class="enter" onclick="enterGift()">
+❤️ Enter My Heart
 </button>
 
 
-<div id="counter">
-Opened: 0 / 30
+<div id="progress">
+🤍 Love Journey: 0 / 30
 </div>
 
 
 <div id="letters">
 
-<!-- 30 Envelopes -->
 
-<div class="envelope" onclick="openMessage(1)">💌</div>
-<div class="envelope" onclick="openMessage(2)">💌</div>
-<div class="envelope" onclick="openMessage(3)">💌</div>
-<div class="envelope" onclick="openMessage(4)">💌</div>
-<div class="envelope" onclick="openMessage(5)">💌</div>
-<div class="envelope" onclick="openMessage(6)">💌</div>
-<div class="envelope" onclick="openMessage(7)">💌</div>
-<div class="envelope" onclick="openMessage(8)">💌</div>
-<div class="envelope" onclick="openMessage(9)">💌</div>
-<div class="envelope" onclick="openMessage(10)">💌</div>
-<div class="envelope" onclick="openMessage(11)">💌</div>
-<div class="envelope" onclick="openMessage(12)">💌</div>
-<div class="envelope" onclick="openMessage(13)">💌</div>
-<div class="envelope" onclick="openMessage(14)">💌</div>
-<div class="envelope" onclick="openMessage(15)">💌</div>
-<div class="envelope" onclick="openMessage(16)">💌</div>
-<div class="envelope" onclick="openMessage(17)">💌</div>
-<div class="envelope" onclick="openMessage(18)">💌</div>
-<div class="envelope" onclick="openMessage(19)">💌</div>
-<div class="envelope" onclick="openMessage(20)">💌</div>
-<div class="envelope" onclick="openMessage(21)">💌</div>
-<div class="envelope" onclick="openMessage(22)">💌</div>
-<div class="envelope" onclick="openMessage(23)">💌</div>
-<div class="envelope" onclick="openMessage(24)">💌</div>
-<div class="envelope" onclick="openMessage(25)">💌</div>
-<div class="envelope" onclick="openMessage(26)">💌</div>
-<div class="envelope" onclick="openMessage(27)">💌</div>
-<div class="envelope" onclick="openMessage(28)">💌</div>
-<div class="envelope" onclick="openMessage(29)">💌</div>
-<div class="envelope" onclick="openMessage(30)">💌</div>
-
+<div class="envelope" onclick="openLetter(1)">
+<div class="number">Memory 01</div>
+<div class="icon">💌</div>
 </div>
 
+<div class="envelope" onclick="openLetter(2)">
+<div class="number">Memory 02</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(3)">
+<div class="number">Memory 03</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(4)">
+<div class="number">Memory 04</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(5)">
+<div class="number">Memory 05</div>
+<div class="icon">💌</div>
+</div>
+<div class="envelope" onclick="openLetter(6)">
+<div class="number">Memory 06</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(7)">
+<div class="number">Memory 07</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(8)">
+<div class="number">Memory 08</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(9)">
+<div class="number">Memory 09</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(10)">
+<div class="number">Memory 10</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(11)">
+<div class="number">Memory 11</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(12)">
+<div class="number">Memory 12</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(13)">
+<div class="number">Memory 13</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(14)">
+<div class="number">Memory 14</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(15)">
+<div class="number">Memory 15</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(16)">
+<div class="number">Memory 16</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(17)">
+<div class="number">Memory 17</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(18)">
+<div class="number">Memory 18</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(19)">
+<div class="number">Memory 19</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(20)">
+<div class="number">Memory 20</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(21)">
+<div class="number">Memory 21</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(22)">
+<div class="number">Memory 22</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(23)">
+<div class="number">Memory 23</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(24)">
+<div class="number">Memory 24</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(25)">
+<div class="number">Memory 25</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(26)">
+<div class="number">Memory 26</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(27)">
+<div class="number">Memory 27</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(28)">
+<div class="number">Memory 28</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(29)">
+<div class="number">Memory 29</div>
+<div class="icon">💌</div>
+</div>
+
+<div class="envelope" onclick="openLetter(30)">
+<div class="number">Memory 30</div>
+<div class="icon">💌</div>
+</div>
+
+
+</div>
 </div>
 
 
 
-<div id="messageBox">
+<div id="message">
 
-<div id="messageText"></div>
+<div id="text"></div>
 
-<button onclick="closeMessage()">
+<button class="close" onclick="closeLetter()">
 Close 🤍
+</button>
+
+</div>
+
+
+
+<div id="ending">
+
+<h2>
+Thank You For Being You 🤍
+</h2>
+
+<p>
+غسان 🤍<br><br>
+إذا وصلت لهون، فهذا يعني إنك فتحت كل رسالة صغيرة من قلبي.<br><br>
+
+يمكن الكلمات بسيطة، لكن كل كلمة فيها جزء من مشاعري ودعواتي لك.<br><br>
+
+ربي يحفظك ويسعد قلبك ويكتب لنا الخير دائمًا.<br><br>
+
+وجودك بحياتي شيء أقدّره كثيرًا 🤍
+</p>
+
+
+<button class="enter" onclick="restart()">
+Replay Memories 🤍
 </button>
 
 </div>
@@ -372,131 +563,77 @@ let opened=[];
 let messages={
 
 1:"بحبك كتييير 🤍",
-
 2:"بموت فيك 🤍",
-
 3:"الله يخليلي إياك يا روح الروح 🤍",
-
 4:"كل عام وأنت الخير يا روحي 🤍",
-
 5:"كل عام وأنت حبي وحياتي 🤍",
-
 6:"حبيب قلبي والله بحبك كتير 🤍",
-
 7:"ربنا يسعدلي قلبك يا روحي 🤍",
-
 8:"كل عام وأنت سعادتي 🤍",
-
 9:"كل عام وأنت حبيب الروح 🤍",
-
 10:"كل عام وأنت أجمل هدية بحياتي 🤍",
-
 11:"بحبك كتير 🤍",
-
 12:"بحبك كل يوم 🤍",
-
-13:"وجودك بحياتي نعمة كبيرة 🤍",
-
-14:"ضحكتك من الأشياء اللي بتفرح قلبي 🤍",
-
-15:"بحب تفاصيلك الصغيرة وكل شيء فيك 🤍",
-
-16:"أنت الشخص اللي دايمًا بدعي ربنا يحفظه إلي 🤍",
-
-17:"معك بحس بالأمان والراحة 🤍",
-
-18:"بحب كل لحظة حلوة جمعتنا 🤍",
-
-19:"يا رب أشوفك دايمًا مبسوط وفرحان 🤍",
-
-20:"الله يجمعنا على خير ويكتب لنا أجمل الأيام 🤍",
-
-21:"رح أضل أختارك كل يوم 🤍",
-
-22:"بتمنى نعيش أيام مليانة حب وفرح سوا 🤍",
-
-23:"أنت جزء من أحلامي الجميلة 🤍",
-
-24:"وجودك فرق بحياتي بطريقة ما بتنحكى 🤍",
-
-25:"ربي يحميك ويخليك إلي 🤍",
-
-26:"أنا فخورة فيك وبكل تعبك 🤍",
-
-27:"قلبي اختارك من بين الكل 🤍",
-
+13:"وجودك بحياتي نعمة 🤍",
+14:"ضحكتك تفرح قلبي 🤍",
+15:"بحب تفاصيلك الصغيرة 🤍",
+16:"ربي يحفظك إلي 🤍",
+17:"معك بحس بالأمان 🤍",
+18:"بحب كل لحظة جمعتنا 🤍",
+19:"يا رب أشوفك دايمًا سعيد 🤍",
+20:"الله يجمعنا على خير 🤍",
+21:"رح أختارك كل يوم 🤍",
+22:"بتمنى نعيش أجمل الأيام سوا 🤍",
+23:"أنت جزء من أحلامي 🤍",
+24:"وجودك فرق بحياتي 🤍",
+25:"ربي يحميك إلي 🤍",
+26:"فخورة فيك وبكل تعبك 🤍",
+27:"قلبي اختارك 🤍",
 28:"شكرًا لأنك أنت 🤍",
+29:"حبي إلك ما إله آخر 🤍",
 
-29:"آخر ظرف... بس حبي إلك ما إله آخر 🤍",
-
-30:
-"غسان 🤍\n\nإذا وصلت لهالرسالة يعني إنك فتحت كل جزء صغير من قلبي.\n\nكل ظرف كان فيه كلمة، بس الحقيقة إن كل الكلمات ما بتكفي توصف قديش إلك مكانة كبيرة عندي.\n\nبحبك مش بس بالأيام الحلوة، بحبك بكل التفاصيل وبكل اللحظات اللي جمعتنا.\n\nبدعي ربنا يحفظك ويسعد قلبك ويكتب لنا الخير وين ما كان.\n\nبتمنى أشوفك دايمًا مبسوط، وأكون سبب من أسباب فرحتك زي ما أنت سبب من أسباب فرحتي.\n\nشكرًا لأنك أنت... وبحبك اليوم وبكرة وكل يوم 🤍"
+30:"غسان 🤍<br><br>إذا وصلت لهالرسالة يعني إنك فتحت كل جزء صغير من قلبي...<br><br>كل كلمة هنا بسيطة، لكن وراها حب كبير ودعوات من قلبي إلك.<br><br>بتمنى ربنا يحفظك ويسعدك ويكتب لنا الخير دائمًا.<br><br>بحبك اليوم وبكرة وكل يوم 🤍"
 
 };
 
 
-
-function showLetters(){
-
+function enterGift(){
 document.getElementById("letters").style.display="flex";
-
 }
 
 
+function openLetter(num){
 
-function openMessage(number){
+document.getElementById("text").innerHTML=messages[num];
 
-document.getElementById("messageText").innerHTML=
-messages[number].replace(/\n/g,"<br>");
-
-document.getElementById("messageBox").style.display="block";
+document.getElementById("message").style.display="block";
 
 
-if(!opened.includes(number)){
+if(!opened.includes(num)){
+opened.push(num);
 
-opened.push(number);
-
-document.getElementById("counter").innerHTML=
-"Opened: "+opened.length+" / 30";
-
+document.getElementById("progress").innerHTML=
+"🤍 Love Journey: "+opened.length+" / 30";
 }
 
 
-createHeart();
-
-}
-
-
-
-function closeMessage(){
-
-document.getElementById("messageBox").style.display="none";
-
-}
-
-
-
-function createHeart(){
-
-let heart=document.createElement("div");
-
-heart.className="smallHeart";
-
-heart.innerHTML="🤍";
-
-heart.style.left=Math.random()*80+"%";
-
-heart.style.top="70%";
-
-document.body.appendChild(heart);
-
-
+if(opened.length===30){
 setTimeout(()=>{
+document.getElementById("message").style.display="none";
+document.getElementById("ending").style.display="block";
+},800);
+}
 
-heart.remove();
+}
 
-},1000);
 
+function closeLetter(){
+document.getElementById("message").style.display="none";
+}
+
+
+function restart(){
+location.reload();
 }
 
 
