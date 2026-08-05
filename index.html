@@ -3,159 +3,278 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>For Ghassan 🤍</title>
 
 <style>
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
     font-family:Georgia,serif;
-    background:linear-gradient(135deg,#f7f1e8,#ffffff,#efe2c6);
-    display:flex;
-    justify-content:center;
-    align-items:center;
+    background:linear-gradient(135deg,#f7f1e8,#fff,#ead8b5);
     min-height:100vh;
+    overflow:hidden;
 }
 
-.box{
-    background:white;
-    padding:40px;
-    border-radius:25px;
+/* Loading Screen */
+
+#loading{
+    position:fixed;
+    inset:0;
+    background:#f7efe3;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:10;
+    animation:fadeOut 1s ease 2.5s forwards;
+}
+
+.loading-text{
+    font-size:28px;
+    color:#8b6b3f;
+    margin-bottom:30px;
+}
+
+.heart{
+    position:absolute;
+    color:#c49a6c;
+    font-size:25px;
+    animation:float 3s infinite ease-in;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    50%{
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-20vh);
+        opacity:0;
+    }
+}
+
+@keyframes fadeOut{
+    to{
+        opacity:0;
+        visibility:hidden;
+    }
+}
+
+
+/* Main */
+
+.container{
     text-align:center;
-    max-width:600px;
-    width:90%;
-    box-shadow:0 10px 30px rgba(0,0,0,.15);
+    padding:40px 20px;
 }
 
 h1{
-    color:#c49b2a;
-}
-
-h3{
-    color:#b08d57;
+    color:#6f5232;
+    margin-top:80px;
+    font-size:32px;
 }
 
 p{
-    color:#666;
-    line-height:1.8;
+    color:#8b6b3f;
+    font-size:18px;
 }
 
 button{
-    background:#c49b2a;
+    background:#b08b57;
     color:white;
-    padding:15px 30px;
     border:none;
-    border-radius:50px;
+    padding:15px 30px;
+    border-radius:30px;
     font-size:18px;
     cursor:pointer;
-    margin-top:15px;
+    margin-top:30px;
+    box-shadow:0 5px 15px #cbb28a;
 }
 
 button:hover{
-    background:#b3871d;
-}
-
-#envelopes{
-    display:none;
-    margin-top:35px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
-}
-
-.envelope{
-    background:#d4af37;
-    color:white;
-    border-radius:18px;
-    padding:20px;
-    cursor:pointer;
-    font-size:40px;
-    transition:.3s;
-}
-
-.envelope:hover{
     transform:scale(1.05);
 }
 
-#message{
-    margin-top:30px;
-    background:#faf7ef;
-    border-radius:15px;
-    padding:20px;
+
+/* Envelopes */
+
+#letters{
+    display:none;
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
 }
 
+.envelope{
+    width:130px;
+    height:100px;
+    background:linear-gradient(#d4af6a,#b8873b);
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:40px;
+    cursor:pointer;
+    transition:.5s;
+    box-shadow:0 8px 20px #c8a46b;
+}
+
+.envelope:hover{
+    transform:translateY(-10px) rotate(3deg);
+}
+
+
+/* Message */
+
+.message-box{
+    display:none;
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:white;
+    width:85%;
+    max-width:400px;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px #bca47d;
+    color:#6f5232;
+    font-size:20px;
+    animation:open .5s;
+}
+
+@keyframes open{
+    from{
+        transform:translate(-50%,-50%) scale(0);
+    }
+    to{
+        transform:translate(-50%,-50%) scale(1);
+    }
+}
+
+.close{
+    margin-top:20px;
+    background:#b08b57;
+}
 </style>
 
 </head>
 
 <body>
 
-<div class="box">
 
-<h1>For Ghassan 🤍</h1>
+<div id="loading">
 
-<h3>Made with Love, Just for You</h3>
+<div class="loading-text">
+Loading Memories... 🤍
+</div>
+
+<div class="heart" style="left:20%;">🤍</div>
+<div class="heart" style="left:40%;animation-delay:1s;">♡</div>
+<div class="heart" style="left:70%;animation-delay:.5s;">🤍</div>
+
+</div>
+
+
+
+<div class="container">
+
+<h1>
+A Gift Made With Love For Ghassan 🤍
+</h1>
 
 <p>
-Every memory in this little place was made especially for you.
-<br><br>
-Each envelope hides a message, a memory, or a reason why I love you.
-<br><br>
-Open them one by one... 🤍
+Every little thing here was made with love.
 </p>
 
-<button onclick="showEnvelopes()">
-Open My Heart ❤️
+
+<button onclick="openHeart()">
+❤️ Open My Heart
 </button>
 
-<div id="envelopes">
 
-<div class="grid">
+<div id="letters">
 
-<div class="envelope" onclick="openMessage(1)">
-💌
-<br>
-<span style="font-size:16px;">Envelope 1</span>
-</div>
-
-<div class="envelope" onclick="openMessage(2)">
-💌
-<br>
-<span style="font-size:16px;">Envelope 2</span>
-</div>
+<div class="envelope" onclick="showMessage(1)">💌</div>
+<div class="envelope" onclick="showMessage(2)">💌</div>
+<div class="envelope" onclick="showMessage(3)">💌</div>
+<div class="envelope" onclick="showMessage(4)">💌</div>
+<div class="envelope" onclick="showMessage(5)">💌</div>
+<div class="envelope" onclick="showMessage(6)">💌</div>
 
 </div>
 
-<div id="message"></div>
 
 </div>
 
+
+
+<div class="message-box" id="message">
+
+<div id="text"></div>
+
+<button class="close" onclick="closeMessage()">
+Close 🤍
+</button>
+
 </div>
+
+
+
 
 <script>
 
-function showEnvelopes(){
-    document.getElementById("envelopes").style.display="block";
+function openHeart(){
+
+document.getElementById("letters").style.display="flex";
+
 }
 
-function openMessage(n){
 
-    if(n==1){
-        document.getElementById("message").innerHTML=
-        "<h2>🤍 The Beginning</h2><p>Dear Ghassan,<br><br>This website was made especially for you. Every envelope will remind you how much you mean to me. ❤️</p>";
-    }
+let messages={
 
-    if(n==2){
-        document.getElementById("message").innerHTML=
-        "<h2>🌸 A Little Note</h2><p>Thank you for being part of my life. I hope every click here makes you smile. 🤍</p>";
-    }
+1:"غسان 🤍 وجودك بحياتي من أجمل الأشياء اللي صارت معي.",
+
+2:"أحب فيك اهتمامك وتعبك ومحاولاتك حتى لو كانت صغيرة.",
+
+3:"هذه الرسالة تذكير إن في شخص يدعي لك ويتمنى لك الخير دائمًا 🤍",
+
+4:"كل لحظة بيننا لها مكان خاص بقلبي.",
+
+5:"أتمنى ربنا يجمعنا على خير ويكتب لنا أيام أجمل.",
+
+6:"هذه مجرد بداية... باقي المفاجآت لسه جاية 🤍✨"
+
+};
+
+
+function showMessage(num){
+
+document.getElementById("text").innerHTML=messages[num];
+
+document.getElementById("message").style.display="block";
+
+}
+
+
+function closeMessage(){
+
+document.getElementById("message").style.display="none";
 
 }
 
 </script>
+
 
 </body>
 </html>
