@@ -68,11 +68,45 @@ Each envelope hides a message, a memory, or a reason why I love you.
 Open them one by one... 🤍
 </p>
 
-<button>
+<button onclick="showEnvelopes()">
 Open My Heart ❤️
 </button>
 
+<div id="envelopes" style="display:none;margin-top:30px;">
+
+<div style="font-size:55px;cursor:pointer;margin:15px;" onclick="openMessage(1)">
+💌
 </div>
 
+<div style="font-size:55px;cursor:pointer;margin:15px;" onclick="openMessage(2)">
+💌
+</div>
+
+<div id="message" style="margin-top:20px;font-size:18px;color:#555;"></div>
+
+</div>
+
+</div>
+<script>
+
+function showEnvelopes(){
+document.getElementById("envelopes").style.display="block";
+}
+
+function openMessage(n){
+
+if(n==1){
+document.getElementById("message").innerHTML=
+"<h2>🤍 الرسالة الأولى</h2><p>غسان... هاي أول رسالة من بين 30 رسالة كتبتها بحب إلك. ❤️</p>";
+}
+
+if(n==2){
+document.getElementById("message").innerHTML=
+"<h2>🌸 الرسالة الثانية</h2><p>كل يوم معك هو نعمة بالنسبة إلي.</p>";
+}
+
+}
+
+</script>
 </body>
 </html>
