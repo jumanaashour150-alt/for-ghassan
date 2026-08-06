@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For Ghassan 🤍</title>
-
+<title>For My Ghassan 🤍</title>
 
 <style>
 
@@ -15,97 +13,115 @@
 box-sizing:border-box;
 }
 
-
 body{
-
 margin:0;
-
-font-family:"Georgia",serif;
-
-background:
-radial-gradient(circle at top,#fff9ed,#f4e3c1);
-
+font-family:Georgia,serif;
+background:linear-gradient(135deg,#f8efe3,#fff,#ead7b5);
 min-height:100vh;
-
-color:#6b4b26;
-
-overflow-x:hidden;
-
+color:#6b4b2a;
+overflow:hidden;
 }
 
 
+/* First Screen */
 
-/* Opening */
-
-#opening{
+#welcome{
 
 position:fixed;
-
 inset:0;
 
-background:#faf0df;
+background:
+linear-gradient(135deg,#f7ecdc,#fff9ef);
 
 display:flex;
-
 flex-direction:column;
-
 justify-content:center;
-
 align-items:center;
 
-z-index:100;
+z-index:10;
 
-animation:opening 3s forwards;
+transition:1.5s;
 
 }
 
 
-
-#opening h1{
+#welcome h1{
 
 font-size:42px;
-
-letter-spacing:2px;
+color:#8b6635;
 
 }
 
 
-
-#opening p{
+#welcome p{
 
 font-size:20px;
+text-align:center;
+max-width:350px;
+line-height:1.7;
 
 }
 
 
+.enter{
 
-@keyframes opening{
+margin-top:35px;
 
-0%,80%{
+padding:16px 45px;
 
-opacity:1;
+border-radius:40px;
+
+border:1px solid #c59b55;
+
+background:#b88942;
+
+color:white;
+
+font-size:18px;
+
+cursor:pointer;
+
+box-shadow:0 8px 20px #d6bb8d;
 
 }
 
-100%{
+
+.fade{
 
 opacity:0;
 
-visibility:hidden;
+pointer-events:none;
 
 }
 
-}
+
+/* Main Page */
 
 
+#main{
 
-/* Main */
-
-.container{
+display:none;
 
 text-align:center;
 
-padding:30px 15px;
+padding:40px 20px;
+
+animation:show 1.5s;
+
+}
+
+
+@keyframes show{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
 
 }
 
@@ -115,15 +131,16 @@ padding:30px 15px;
 
 margin-top:70px;
 
-font-size:40px;
+font-size:36px;
+
+color:#76522b;
 
 }
 
 
-
 .subtitle{
 
-font-size:20px;
+font-size:19px;
 
 margin-top:20px;
 
@@ -131,17 +148,17 @@ margin-top:20px;
 
 
 
-.gold-button{
+.open{
 
 margin-top:35px;
 
-padding:16px 40px;
+padding:15px 35px;
 
-border-radius:40px;
+background:#b88942;
 
-border:1px solid #c8a15a;
+border:none;
 
-background:#b88a3a;
+border-radius:35px;
 
 color:white;
 
@@ -153,19 +170,20 @@ cursor:pointer;
 
 
 
-/* Journey */
+/* Progress */
 
-#journey{
 
-font-size:21px;
+#counter{
 
 margin:25px;
+
+font-size:20px;
 
 }
 
 
 
-/* Letters */
+/* Letters container */
 
 
 #letters{
@@ -176,9 +194,9 @@ justify-content:center;
 
 flex-wrap:wrap;
 
-gap:25px;
+gap:20px;
 
-max-width:1000px;
+max-width:900px;
 
 margin:auto;
 
@@ -186,17 +204,20 @@ margin:auto;
 
 
 
+/* Envelope */
+
+
 .envelope{
 
-width:130px;
+width:120px;
 
-height:100px;
+height:95px;
 
-background:#fffaf0;
+background:#fffaf1;
 
-border:2px solid #c8a15a;
+border:2px solid #c59b55;
 
-border-radius:12px;
+border-radius:15px;
 
 display:flex;
 
@@ -208,42 +229,32 @@ align-items:center;
 
 cursor:pointer;
 
-box-shadow:0 8px 25px rgba(150,110,50,.25);
+box-shadow:0 8px 25px rgba(120,80,30,.2);
 
 transition:.5s;
 
 }
 
 
-
 .envelope:hover{
 
-transform:translateY(-12px);
+transform:translateY(-10px);
 
 }
 
 
-
-.memory{
-
-font-size:14px;
-
-letter-spacing:1px;
-
-}
-
-
-
-.seal{
+.heart{
 
 font-size:35px;
 
 }
 
 
+.small{
 
-/* Letter paper */
+font-size:13px;
 
+}
 
 #paper{
 
@@ -252,115 +263,50 @@ display:none;
 position:fixed;
 
 top:50%;
-
 left:50%;
 
 transform:translate(-50%,-50%);
 
 width:85%;
 
-max-width:450px;
+max-width:420px;
 
-background:#fffdf7;
+background:#fffaf1;
 
 padding:35px;
 
 border-radius:20px;
 
-border:1px solid #d4b16a;
+border:1px solid #c59b55;
 
-box-shadow:0 15px 40px rgba(100,70,20,.3);
+box-shadow:0 15px 40px #cbb48a;
 
-font-size:22px;
+font-size:21px;
 
 line-height:1.8;
 
-z-index:200;
+text-align:center;
 
-animation:paper .5s;
+z-index:20;
+
+animation:openPaper .5s;
 
 }
 
 
-
-@keyframes paper{
+@keyframes openPaper{
 
 from{
-
 transform:translate(-50%,-50%) scale(.5);
-
 opacity:0;
-
 }
 
 to{
-
 transform:translate(-50%,-50%) scale(1);
-
 opacity:1;
-
 }
 
 }
-
-
-
-.close{
-
-background:#b88a3a;
-
-color:white;
-
-border:0;
-
-padding:12px 25px;
-
-border-radius:30px;
-
-margin-top:25px;
-
-}
-
-
-
-/* Ending */
-
-#ending{
-
-display:none;
-
-position:fixed;
-
-inset:0;
-
-background:#faf0df;
-
-z-index:300;
-
-text-align:center;
-
-padding:70px 25px;
-
-}
-
-
-
-#ending h2{
-
-font-size:38px;
-
-}
-
-
-
-#ending p{
-
-font-size:22px;
-
-line-height:2;
-
-}
-
 
 </style>
 
@@ -370,172 +316,156 @@ line-height:2;
 <body>
 
 
+<div id="welcome">
 
-<div id="opening">
 
 <h1>
-For Ghassan 🤍
+For My Ghassan 🤍
 </h1>
 
+
 <p>
-A little piece of my heart, made only for you.
+A little surprise made with love...<br>
+
+Take your time, this was made especially for you 🤍
+
 </p>
+
+
+<button class="enter" onclick="enterSite()">
+
+Enter 🤍
+
+</button>
+
 
 </div>
 
 
 
-<div class="container">
+<div id="main">
 
 
 <div class="title">
-For Ghassan 🤍
+
+A Gift Made With Love For Ghassan 🤍
+
 </div>
 
 
 <div class="subtitle">
 
-30 memories, 30 feelings, one special person.
+30 little messages from my heart 💌
 
 </div>
 
 
+<button class="open" onclick="openHeart()">
 
-<button class="gold-button" onclick="startGift()">
-
-Enter The Memories ✨
+Open My Heart 💌
 
 </button>
 
 
+<div id="counter">
 
-<div id="journey">
-
-🤍 Love Journey: 0 / 30
+Opened: 0 / 30
 
 </div>
 
 
 
-<div id="letters">
-
-<div class="envelope" onclick="openLetter(1)">
-<div class="memory">Memory I</div>
-<div class="seal">✉</div>
+<div id="letters"> <div class="envelope" onclick="openLetter(1)">
+<div class="heart">💌</div>
+<div class="small">رسالة صغيرة</div>
 </div>
 
 <div class="envelope" onclick="openLetter(2)">
-<div class="memory">Memory II</div>
-<div class="seal">✉</div>
+<div class="heart">💌</div>
+<div class="small">رسالة صغيرة</div>
 </div>
 
 <div class="envelope" onclick="openLetter(3)">
-<div class="memory">Memory III</div>
-<div class="seal">✉</div>
+<div class="heart">💌</div>
+<div class="small">رسالة صغيرة</div>
 </div>
 
 <div class="envelope" onclick="openLetter(4)">
-<div class="memory">Memory IV</div>
-<div class="seal">✉</div>
+<div class="heart">💌</div>
+<div class="small">رسالة صغيرة</div>
 </div>
 
 <div class="envelope" onclick="openLetter(5)">
-<div class="memory">Memory V</div>
-<div class="seal">✉</div>
+<div class="heart">💌</div>
+<div class="small">رسالة صغيرة</div>
 </div>
 
-<div class="envelope" onclick="openLetter(6)">
-<div class="memory">Memory VI</div>
-<div class="seal">✉</div>
-</div>
+<!-- نفس الشكل نكمله للـ30 ظرف -->
 
-<div class="envelope" onclick="openLetter(7)">
-<div class="memory">Memory VII</div>
-<div class="seal">✉</div>
-</div>
-
-<div class="envelope" onclick="openLetter(8)">
-<div class="memory">Memory VIII</div>
-<div class="seal">✉</div>
-</div>
-
-<div class="envelope" onclick="openLetter(9)">
-<div class="memory">Memory IX</div>
-<div class="seal">✉</div>
-</div>
-
-<div class="envelope" onclick="openLetter(10)">
-<div class="memory">Memory X</div>
-<div class="seal">✉</div>
-</div>
-
-<div class="envelope" onclick="openLetter(11)">
-<div class="memory">Memory XI</div>
-<div class="seal">✉</div>
-</div>
-
-<div class="envelope" onclick="openLetter(12)">
-<div class="memory">Memory XII</div>
-<div class="seal">✉</div>
-</div>
-
-<!-- نكمل باقي الـ 18 ظرف هنا -->
-
+<div class="envelope" onclick="openLetter(30)">
+<div class="heart">💌</div>
+<div class="small">رسالة أخيرة</div>
 </div>
 
 
 </div>
-
 
 
 <div id="paper">
 
-<div id="text"></div>
+<div id="messageText"></div>
 
-<button class="close" onclick="closeLetter()">
+<button class="enter" onclick="closeLetter()">
 Close 🤍
 </button>
 
 </div>
 
-
-
-<div id="ending">
-
-<h2>
-Thank You For Being You 🤍
-</h2>
-
-<p>
-غسان 🤍<br><br>
-
-بعد كل هذه الرسائل...<br>
-تبقى أجمل رسالة هي وجودك بحياتي.<br><br>
-
-أتمنى لك السعادة والراحة دائمًا،<br>
-وأن يكتب الله لك أجمل الأيام.<br><br>
-
-My favorite memory is still you 🤍
-
-</p>
-
 </div>
 
+
+</div>
 
 
 <script>
 
 
+function enterSite(){
+
+document.getElementById("welcome").classList.add("fade");
+
+
+setTimeout(()=>{
+
+document.getElementById("welcome").style.display="none";
+
+document.getElementById("main").style.display="block";
+
+
+},1200);
+
+
+}
+
+
+function openHeart(){
+
+document.getElementById("letters").style.display="flex";
+
+}
+
+
+</script>
 let opened=[];
 
 
 let messages={
 
-1:"بحبك كتييير 🤍",
+1:"غسان 🤍 أول رسالة حبيت أبدأ فيها... بحبك كتيير، وأتمنى تعرف قدّيش وجودك يعني لي.",
 
-2:"بموت فيك 🤍",
+2:"بموت فيك 🤍 ويمكن الكلمات قليلة، بس مكانك بقلبي كبير.",
 
-3:"الله يخليلي إياك يا روح الروح 🤍",
+3:"الله يخليلي إياك يا روح الروح ويحفظك إلي دائمًا 🤍",
 
 4:"كل عام وأنت الخير يا روحي 🤍",
 
@@ -543,69 +473,61 @@ let messages={
 
 6:"حبيب قلبي والله بحبك كتير 🤍",
 
-7:"ربنا يسعدلي قلبك يا روحي 🤍",
+7:"ربنا يسعدلي قلبك مثل ما وجودك يسعد قلبي 🤍",
 
-8:"كل عام وأنت سعادتي 🤍",
+8:"كل عام وأنت سعادتي وفرحتي 🤍",
 
 9:"كل عام وأنت حبيب الروح 🤍",
 
-10:"كل عام وأنت أجمل هدية بحياتي 🤍",
+10:"أنت أجمل هدية بحياتي 🤍",
 
-11:"بحبك كتير 🤍",
+11:"بحبك كتير، أكثر مما أقدر أوصف 🤍",
 
-12:"بحبك كل يوم 🤍",
+12:"بحبك كل يوم وبكل يوم أكثر 🤍",
 
-13:"وجودك بحياتي نعمة 🤍",
+13:"وجودك بحياتي نعمة كبيرة 🤍",
 
-14:"ضحكتك بتفرح قلبي 🤍",
+14:"أحب فيك أشياء كثيرة يمكن أنت ما تنتبه لها 🤍",
 
-15:"بحب تفاصيلك الصغيرة 🤍",
+15:"ضحكتك وحدها قادرة تغير يومي 🤍",
 
-16:"ربي يحفظك ويسعد قلبك 🤍",
+16:"ربي يحفظك ويبعد عنك كل تعب 🤍",
 
 17:"معك بحس بالراحة والأمان 🤍",
 
-18:"كل لحظة معك لها مكان خاص 🤍",
+18:"أحب كل تفاصيل قصتنا 🤍",
 
-19:"أتمنى أشوفك دايمًا سعيد 🤍",
+19:"أتمنى أشوفك دائمًا سعيد 🤍",
 
-20:"الله يجمعنا على خير 🤍",
+20:"الله يجمعنا على خير ويكتب لنا أجمل الأيام 🤍",
 
 21:"رح أختارك كل يوم 🤍",
 
-22:"أحلى أيامي هي اللي فيها أنت 🤍",
+22:"أتمنى نعيش ذكريات كثيرة حلوة سوا 🤍",
 
-23:"أنت جزء من أحلامي 🤍",
+23:"أنت جزء من أحلامي الجميلة 🤍",
 
-24:"وجودك فرق بحياتي 🤍",
+24:"وجودك فرق بحياتي بطريقة ما بتنحكى 🤍",
 
-25:"ربي يحميك إلي 🤍",
+25:"ربي يخليك إلي ويحميك 🤍",
 
-26:"فخورة فيك وبكل تعبك 🤍",
+26:"أنا فخورة فيك وبكل تعبك 🤍",
 
 27:"قلبي اختارك من بين الكل 🤍",
 
 28:"شكرًا لأنك أنت 🤍",
 
-29:"حبي إلك ما إله آخر 🤍",
+29:"حبي إلك ما إله نهاية 🤍",
 
-30:"غسان 🤍<br><br>إذا وصلت لهون، فأنت فتحت كل قطعة صغيرة من قلبي.<br><br>كل رسالة كانت بسيطة، لكن خلفها حب كبير ودعوات صادقة إلك.<br><br>ربي يحفظك ويسعد قلبك ويكتب لنا الخير دائمًا.<br><br>وجودك بحياتي شيء أقدّره كثيرًا 🤍"
+30:"غسان 🤍 إذا وصلت لهون... يعني إنك فتحت كل قطعة صغيرة من قلبي. يمكن كل رسالة بسيطة، لكن وراها حب كبير ودعوات من قلبي إلك. ربي يحفظك ويسعد قلبك ويكتب لنا الخير دائمًا. بحبك اليوم وبكرة وكل يوم 🤍"
 
 };
 
 
 
-function startGift(){
-
-document.getElementById("letters").style.display="flex";
-
-}
-
-
-
 function openLetter(num){
 
-document.getElementById("text").innerHTML=messages[num];
+document.getElementById("messageText").innerHTML=messages[num];
 
 document.getElementById("paper").style.display="block";
 
@@ -614,26 +536,12 @@ if(!opened.includes(num)){
 
 opened.push(num);
 
-document.getElementById("journey").innerHTML=
-"🤍 Love Journey: "+opened.length+" / 30";
-
-}
-
-
-if(opened.length===30){
-
-setTimeout(()=>{
-
-document.getElementById("paper").style.display="none";
-
-document.getElementById("ending").style.display="block";
-
-},1000);
+document.getElementById("counter").innerHTML=
+"Opened: "+opened.length+" / 30";
 
 }
 
 }
-
 
 
 function closeLetter(){
@@ -643,8 +551,6 @@ document.getElementById("paper").style.display="none";
 }
 
 
-</script>
-
-
 </body>
 </html>
+
